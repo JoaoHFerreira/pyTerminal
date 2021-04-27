@@ -8,4 +8,3 @@ Will have:
 * `cd`: Enter the chosen dir;
 * `cd ..`: Back to the previously dir;
 * `echo`: Print a given input;
-
