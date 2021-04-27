@@ -7,3 +7,4 @@ Will have:
 * `pwd`: Display the current dir;
 * `cd`: Enter the chosen dir;
 * `cd ..`: Back to the previously dir;
+* `echo`: Print a given input;
