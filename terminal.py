@@ -48,5 +48,10 @@ while True:
         atu = atu + temp + "/"
         continue
 
+
+    if o.split(" ")[0] == "echo":
+        print(o[5:])
+
+
         
     
