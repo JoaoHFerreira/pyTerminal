@@ -39,11 +39,7 @@ while True:
     if o.split(" ")[0] == "mkdir":
         if len(o.split(" ")) == 2:
             c[atu]["f"].append(atu  +  o.split(" ")[1] + "/")
-            c[atu  +  o.split(" ")[1] + "/"] = {
-                "f": [],
-                "fi": [],
-                "p": atu,
-                }
+            c[atu  +  o.split(" ")[1] + "/"] = {"f": [],"fi": [],"p": atu,}
         continue
 
     # Simplesmente verifica se o que foi digitado é pwd, caso sim, print resultado do path atual
