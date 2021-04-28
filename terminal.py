@@ -1,56 +1,54 @@
-atu  = "/"
-c = { 
-    "/": {
-        "f": [],
-        "fi": [],
-        "p": "/",
-        "r": True
+curent_folder  = "/"
+tree_structure = { 
+    curent_folder: {
+        "folders": list(),
+        "files": list(),
+        "previous_folder": "/",
     }
 }
 
 
 while True:
-    o = input("/")
+    command = input("/")
 
-    if o == "ls":
-        if c[atu]["fi"] or c[atu]["f"]:
-            print(c[atu]["fi"])
-            print(c[atu]["f"])
+    if command == "ls":
+        if tree_structure[curent_folder]["files"] or tree_structure[curent_folder]["folders"]:
+            print(tree_structure[curent_folder]["files"])
+            print(tree_structure[curent_folder]["folders"])
         continue
 
-    if o.split(" ")[0] == "touch":
-        if len(o.split(" ")) == 2:
-            c[atu]["fi"].append(o.split(" ")[1])
+    if command.split(" ")[0] == "touch":
+        if len(command.split(" ")) == 2:
+            tree_structure[curent_folder]["files"].append(command.split(" ")[1])
         continue
         
 
-    if o.split(" ")[0] == "mkdir":
-        if len(o.split(" ")) == 2:
-            c[atu]["f"].append(atu  +  o.split(" ")[1] + "/")
-            c[atu  +  o.split(" ")[1] + "/"] = {
-                "f": [],
-                "fi": [],
-                "p": atu,
-                "r": False
+    if command.split(" ")[0] == "mkdir":
+        if len(command.split(" ")) == 2:
+            tree_structure[curent_folder]["folders"].append(curent_folder  +  command.split(" ")[1] + "/")
+            tree_structure[curent_folder  +  command.split(" ")[1] + "/"] = {
+                "folders": list(),
+                "files": list(),
+                "previous_folder": curent_folder,
                 }
         continue
 
-    if o == "pwd":
-        print(atu)
+    if command == "pwd":
+        print(curent_folder)
 
-    if o == "cd ..":
-        atu = c[atu]["p"]
+    if command == "cd ..":
+        curent_folder = tree_structure[curent_folder]["previous_folder"]
         continue
 
 
-    if o.split(" ")[0] == "cd":
-        temp = o.split(" ")[1].split(" ")[0]
-        atu = atu + temp + "/"
+    if command.split(" ")[0] == "cd":
+        temp = command.split(" ")[1].split(" ")[0]
+        curent_folder = curent_folder + temp + "/"
         continue
 
 
-    if o.split(" ")[0] == "echo":
-        print(o[5:])
+    if command.split(" ")[0] == "echo":
+        print(command[5:])
 
 
         
